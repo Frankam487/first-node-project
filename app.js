@@ -57,3 +57,6 @@ app.get('*', (req, res) => {
 app.listen(3001, () => {
   console.log('attente de requete qu port 3001');
 });
+
+//cours 10 
+//19: 41
