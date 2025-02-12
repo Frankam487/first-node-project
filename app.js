@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/node', (req, res) => {
-
+console.log(req.body);
 })
 
 app.get('/about', (req, res) => {
