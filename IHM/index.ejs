@@ -1,0 +1,40 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+  </head>
+  <body>
+    
+    <div class="style" style="width: 50%; margin: auto;">
+      
+    <%- include('./composants/header')%>
+      <section>
+        <form action="/node" method="post">
+          <label for="titre">Titre</label> <br>
+          <input type="text" name="titre" id="titre"> <br>
+          <label for="description">description</label> <br>
+          <textarea name="description" id="description" cols="20" rows="5"></textarea> <br>
+          <input type="submit" name="" id="" value="Enregistrer">
+        </form>
+        <p>---------------------------</p>
+      </section>
+      <section>
+  <h2>Liste des notes</h2>
+        
+        
+        <%
+        for(i=0 ; i < resultat.length; i++) { %>
+
+          <h3><%= resultat[i].titre%></h3>
+          <p><%= resultat[i].description%></p>
+          
+        <% } %>
+        
+      
+      </section>
+      
+    </div>
+  </body>
+  </html>
