@@ -13,7 +13,7 @@ const optionBd = {
   database: 'node_bd'
 };
 //extraction des donnees du formulaire
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 //definition du middleware
 app.use(myconnection(mysql, optionBd, 'pool'))
 
