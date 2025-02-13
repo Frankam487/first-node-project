@@ -12,13 +12,14 @@
     <%- include('./composants/header')%>
       <section>
         <form action="/node" method="post">
+          <input type="hidden" name="id" id="id">
           <label for="titre">Titre</label> <br>
           <input type="text" name="titre" id="titre"> <br>
           <label for="description">description</label> <br>
           <textarea name="description" id="description" cols="20" rows="5"></textarea> <br>
           <input type="submit" name="" id="" value="Enregistrer">
         </form>
-        <p>---------------------------</p>
+        <p>---------------------------------------------------</p>
       </section>
       <section>
   <h2>Liste des notes</h2>
@@ -26,15 +27,35 @@
         
         <%
         for(i=0 ; i < resultat.length; i++) { %>
+<th>
 
-          <h3><%= resultat[i].titre%></h3>
-          <p><%= resultat[i].description%></p>
-          
-        <% } %>
-        
-      
+  <h3><%= resultat[i].titre%></h3>
+  <p><%= resultat[i].description%></p>
+</th>
+
+<input type="button" value="Supprimer" onclick="supprimer('<%=resultat[i].id%>')" >
+<input type="button" value="Modifier"  onclick="remplirData('<%= resultat[i].id %>','<%= resultat[i].titre %>', '<%= resultat[i].description %>')">
+
+<% } %>
+
       </section>
       
     </div>
-  </body>
+    </body>
+    <script>
+    function remplirData(id, titre, desc){
+  document.getElementById('id').value = id;
+  document.getElementById('titre').value = titre;
+  document.getElementById('description').value = desc;
+    }
+    function supprimer(id){
+      fetch('/node/'+id, {
+        method: 'DELETE'
+      }).then(res => res.json()).then((data) => {
+        console.log(data);
+        window.location.href = data.routeRacine;
+      }).catch(err => console.log(err));
+    }
+      </script>
+
   </html>
